@@ -1,0 +1,11 @@
+# Document version
+version: '3'
+# Containers to start
+services: 
+  redis-server:
+    image: 'redis' # Pull from DockerHub
+  node-app:
+    restart: on-failure # restart on error, other options:  "no" (as no means false in yaml, we should use quotes), always, unless-stopped
+    build: . # create image using Dockerfile
+    ports: 
+      - "8081:8081" # Port mapping LocalMachine:Container Port
